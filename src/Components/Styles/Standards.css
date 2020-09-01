@@ -1,0 +1,23 @@
+.Standard-Input {
+  height: 38px;
+  margin-left: 20px;
+  padding: 5px;
+  border: none;
+  width: 100%;
+  letter-spacing: 0.05em;
+}
+
+.HeaderStandard{
+    color: var(--headerText);
+    font-weight: bolder;
+    font-size: 14px;
+}
+
+.Standard-Wrapper {
+  display: flex;
+}
+
+.Standard-DepthMark {
+  background-color: var(--graycolor);
+  padding-left: 35px;
+}

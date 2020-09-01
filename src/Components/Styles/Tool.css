@@ -1,0 +1,13 @@
+.Tool-Wrapper {
+  display: flex;
+  margin: 0px 0px;
+  border: 1px solid var(--graycolor);
+}
+
+.Tool:nth-of-type(1) {
+  flex-grow: 1;
+  flex-basis: 180px;
+}
+.Tool:nth-of-type(2) {
+  flex-grow: 7;
+}

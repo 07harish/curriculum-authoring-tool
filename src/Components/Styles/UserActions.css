@@ -1,0 +1,16 @@
+.UserActions {
+  padding: 4px 4px;
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+.UserActions-Wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: 10px;
+}
+
+.fas {
+  color: var(--graycolor);
+}
