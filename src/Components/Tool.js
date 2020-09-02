@@ -44,7 +44,11 @@ const Tool = () => {
 
   return (
     <>
-      {root.length === 0 && <div><center>Add new standards to create curriculum!</center></div>}
+      {root.length === 0 && (
+        <div>
+          <center>Add new standards to create curriculum!</center>
+        </div>
+      )}
       <RenderRowsRecursively subRows={subRows} rows={root} />
     </>
   )
