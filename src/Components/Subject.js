@@ -21,7 +21,7 @@ const Subject = () => {
   return (
     <>
       <div className='Subject-Wrapper'>
-        <h3>{subject}</h3>
+        <h2>{subject}</h2>
         <div className='Subject-CTA'>
           <button onClick={() => downloadJsonFile(store.alldata)}>
             Download

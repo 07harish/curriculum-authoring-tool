@@ -5,11 +5,11 @@ const ToolHeader = () => {
     <>
       <div className='ToolHeader-Wrapper'>
         <div className='ToolHeader'>
-          <div>Actions</div>
+          <div><b>Actions</b></div>
           <small>( Move, Indent, Outdent, Delete )</small>
         </div>
         <div className='ToolHeader'>
-          <div>Standard</div>
+          <div><b>Standard</b></div>
           <small>The text of the standard</small>
         </div>
       </div>
