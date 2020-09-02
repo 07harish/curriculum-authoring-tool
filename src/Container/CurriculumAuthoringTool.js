@@ -3,7 +3,7 @@ import ToolHeader from '../Components/ToolHeader'
 import Tool from '../Components/Tool'
 import Subject from '../Components/Subject'
 import './Styles/CurriculumAuthoringTool.css'
-import AddRow from '../Components/Styles/AddRow'
+import AddRow from '../Components/AddRow'
 
 const CurriculumAuthoringTool = () => {
   return (
@@ -14,6 +14,7 @@ const CurriculumAuthoringTool = () => {
       <hr></hr>
       <Tool></Tool>
       <hr></hr>
+      <br></br>
       <AddRow></AddRow>
     </div>
   )

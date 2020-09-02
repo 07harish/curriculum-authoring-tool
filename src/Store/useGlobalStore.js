@@ -1,11 +1,13 @@
+// Hook for state management
+
 import { useReducer } from 'react'
 import * as actionTypes from './Constants'
-import { data } from '../Data/subjectData'
 import { alldata } from '../Data/subjectData'
 import {
   constructTree,
   findWhereParentExists,
-  findDepth
+  findDepth,
+  normalizedLookupFn
 } from '../Utils/Normalize'
 
 function Reducer (state, action) {
@@ -51,17 +53,13 @@ function Reducer (state, action) {
         delete normalizedLookup[rowId]
         normalizedLookup[rowParent].splice(rowIndex, 1)
       }
-      // Run construct tree to get new tree
+      // After modifying lookup, Run construct tree to get new tree
       return {
         ...state,
         alldata: constructTree(normalizedLookup, alldata)
       }
 
     case actionTypes.OUTDENT_STANDARD:
-      console.log(
-        'OUTDENT_STANDARD',
-        findWhereParentExists(row, normalizedLookup)
-      )
       const getKeyAndIndex = findWhereParentExists(rowParent, normalizedLookup)
       // if row is tried to outdent to depth -1, return state.
       if (!getKeyAndIndex) return state
@@ -81,7 +79,6 @@ function Reducer (state, action) {
       }
 
     case actionTypes.DELETE_STANDARD:
-      console.log('DELETE_STANDARD', state, action, row, rowId)
       // DELETE from current array
       let deleteIndex = normalizedLookup[rowParent].indexOf(rowId)
       normalizedLookup[rowParent].splice(deleteIndex, 1)
@@ -155,7 +152,6 @@ function Reducer (state, action) {
       }
 
       let newnorm = normalizedLookupFn(newTree)
-      console.log('EDIT_STANDARD', action, newTree, newnorm)
       return {
         ...state,
         alldata: newTree,
@@ -204,21 +200,14 @@ function Reducer (state, action) {
 
       return { ...state, normalizedLookup: lookUpClone }
 
+    case actionTypes.SET_GLOBAL_STATE:
+      let newInitLookUp = normalizedLookupFn(action.payload)
+      let newJsonData = constructTree(newInitLookUp, action.payload)
+      return { ...state, alldata: newJsonData, normalizedLookup: newInitLookUp }
+
     default:
       return { state }
   }
-}
-
-function normalizedLookupFn (alldata) {
-  let { subRows } = alldata
-  let normalizedLookup = {}
-  normalizedLookup.root = alldata.root
-  Object.keys(subRows).forEach((item, index) => {
-    if (subRows[item].subRows) {
-      normalizedLookup[item] = subRows[item].subRows
-    }
-  })
-  return normalizedLookup
 }
 
 const useGlobalStore = () => {
@@ -226,10 +215,8 @@ const useGlobalStore = () => {
   let tree = constructTree(normalizedLookup, alldata)
   const [store, dispatch] = useReducer(Reducer, {
     alldata: tree,
-    data,
     normalizedLookup
   })
-  console.log('jkasd', store)
   return { store, dispatch }
 }
 

@@ -1,6 +1,7 @@
 :root {
   --graycolor: #dadada;
   --headerText: #00c0c0;
+  --secondaryText: gray;
 }
 
 .App {
@@ -15,4 +16,19 @@ button {
   padding: 7px;
   margin: 5px;
   cursor: pointer;
+}
+
+.btn{
+  width: 250px;
+  background-color: rgb(56, 149, 255);
+  padding: 12px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  color:white;
+}
+
+.btn > .fas {
+  font-size: 17px;
+  color:white
 }

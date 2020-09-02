@@ -48,3 +48,9 @@ export const moveUp_Standard = (row, rowId) => {
     payload: { row, rowId }
   }
 }
+export const setGlobalState = (newState) => {
+  return {
+    type: actionTypes.SET_GLOBAL_STATE,
+    payload: newState
+  }
+}

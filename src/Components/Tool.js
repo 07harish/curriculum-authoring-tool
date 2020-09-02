@@ -17,7 +17,11 @@ const RenderRowsRecursively = ({ rows, subRows }) => {
             <UserActions row={subRows[rowId]} rowId={rowId}></UserActions>
           </div>
           <div className='Tool'>
-            <Standard  row={subRows[rowId]}  rowId={rowId} indentDepth={subRows[rowId].indentDepth}></Standard>
+            <Standard
+              row={subRows[rowId]}
+              rowId={rowId}
+              indentDepth={subRows[rowId].indentDepth}
+            ></Standard>
           </div>
         </div>
         <RenderRowsRecursively
@@ -33,13 +37,17 @@ const Tool = () => {
   const {
     store: {
       normalizedLookup: { root },
-      alldata: {subRows}
+      alldata: { subRows }
       // data: { Tool }
     }
   } = useContext(Context)
-  console.log('skjdf', useContext(Context))
-  // return <RenderRowsRecursively rows={Tool} />
-  return <RenderRowsRecursively subRows={subRows} rows={root} />
+
+  return (
+    <>
+      {root.length === 0 && <div><center>Add new standards to create curriculum!</center></div>}
+      <RenderRowsRecursively subRows={subRows} rows={root} />
+    </>
+  )
 }
 
 export default Tool

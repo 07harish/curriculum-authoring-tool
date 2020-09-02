@@ -24,9 +24,22 @@ export const constructTree = function (lp, data) {
   return newJson
 }
 
+// Takes Json data as argument and returns new Lookup
+export const normalizedLookupFn = (alldata) => {
+  let { subRows } = alldata
+  let normalizedLookup = {}
+  normalizedLookup.root = alldata.root
+  Object.keys(subRows).forEach((item, index) => {
+    if (subRows[item].subRows) {
+      normalizedLookup[item] = subRows[item].subRows
+    }
+  })
+  return normalizedLookup
+}
+
+
 // Find the parent's - key, index and its subrows
 export const findWhereParentExists = function (id, lp) {
-  // console.log("jkad", id, lp);
   for (let [key, value] of Object.entries(lp)) {
     let index = lp[key].indexOf(id)
     if (value.includes(id)) {

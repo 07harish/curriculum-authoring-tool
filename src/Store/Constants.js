@@ -8,3 +8,5 @@ export const MOVE_UP = 'MOVE_UP'
 
 export const ADD_NEW_STANDARD = 'ADD_NEW_STANDARD'
 export const EDIT_STANDARD = 'EDIT_STANDARD'
+
+export const SET_GLOBAL_STATE = 'SET_GLOBAL_STATE'
