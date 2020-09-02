@@ -51,7 +51,6 @@ function Reducer (state, action) {
         delete normalizedLookup[rowId]
         normalizedLookup[rowParent].splice(rowIndex, 1)
       }
-      console.log("kjhdf", constructTree(normalizedLookup, alldata) );
       // Run construct tree to get new tree
       return {
         ...state,
@@ -76,7 +75,6 @@ function Reducer (state, action) {
       if (normalizedLookup[rowParent].length === 0)
         delete normalizedLookup[rowParent]
 
-      console.log('lakhf', constructTree(normalizedLookup, alldata))
       return {
         ...state,
         alldata: constructTree(normalizedLookup, alldata)
@@ -120,11 +118,10 @@ function Reducer (state, action) {
         return newElement
       }
       const uniqueId = JSON.stringify(Date.now())
-      console.log("aksjd",typeof uniqueId);
+
       let addToLast = 'root'
       if (normalizedLookup.root.length) {
         addToLast = findRecentlyAddedRow(normalizedLookup.root)
-        // console.log('kjsdf', addToLast, normalizedLookup.root)
       }
 
       const newStandard = {
@@ -143,9 +140,8 @@ function Reducer (state, action) {
         newTree.root = [...newTree.root, uniqueId]
         newTree.subRows.root = [...newTree.root]
         newTree.subRows = newTree.subRows
-        ? { ...newTree.subRows, ...newStandard }
-        : { ...newStandard }
-        console.log('kjsdf', newTree)
+          ? { ...newTree.subRows, ...newStandard }
+          : { ...newStandard }
       } else {
         newTree.subRows = { ...newTree.subRows, ...newStandard }
         if (!newTree.subRows[addToLast].subRows) {
@@ -171,8 +167,42 @@ function Reducer (state, action) {
     case actionTypes.EDIT_STANDARD:
       let editingTree = { ...alldata }
       editingTree.subRows[rowId].headerText = action.payload.newText
-     
+
       return { ...state, alldata: editingTree }
+
+    case actionTypes.MOVE_DOWN:
+      let cloneLookUp = { ...normalizedLookup }
+      let moveDownIndex = cloneLookUp[rowParent].indexOf(rowId)
+
+      // If row is already at the bottom position, return state, no swap
+      if (!cloneLookUp[rowParent][moveDownIndex + 1]) {
+        return state
+      }
+
+      // swap current index with next index
+      let tempNextIndex = cloneLookUp[rowParent][moveDownIndex + 1]
+      cloneLookUp[rowParent][moveDownIndex + 1] =
+        cloneLookUp[rowParent][moveDownIndex]
+      cloneLookUp[rowParent][moveDownIndex] = tempNextIndex
+
+      return { ...state, normalizedLookup: cloneLookUp }
+
+    case actionTypes.MOVE_UP:
+      let lookUpClone = { ...normalizedLookup }
+      let moveUpIndex = lookUpClone[rowParent].indexOf(rowId)
+
+      // If row is already at the top position, return state, no swap
+      if (!lookUpClone[rowParent][moveUpIndex - 1]) {
+        return state
+      }
+
+      // swap current index with prev index
+      let tempPrevIndex = lookUpClone[rowParent][moveUpIndex - 1]
+      lookUpClone[rowParent][moveUpIndex - 1] =
+        lookUpClone[rowParent][moveUpIndex]
+      lookUpClone[rowParent][moveUpIndex] = tempPrevIndex
+
+      return { ...state, normalizedLookup: lookUpClone }
 
     default:
       return { state }

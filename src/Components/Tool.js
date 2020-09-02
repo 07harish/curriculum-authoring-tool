@@ -10,7 +10,6 @@ const RenderRowsRecursively = ({ rows, subRows }) => {
   }
 
   return rows.map((rowId, index) => {
-    // console.log('kjasfd',subRows,  rowId)
     return (
       <React.Fragment key={index}>
         <div className='Tool-Wrapper'>

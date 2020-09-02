@@ -49,7 +49,7 @@ export const data = {
 
 export let alldata = {
   root: ['1', '2'],
-  subject: 'MatheMatics',
+  subject: 'Mathematics',
   rememberLastAddedRow: '2.0',
   subRows: {
     '1.0': {

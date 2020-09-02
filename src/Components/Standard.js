@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import './Styles/Standards.css'
 import RenderIndentDepth from './RenderIndentDepth'
 import { editText_Standard } from '../Store/Actions'

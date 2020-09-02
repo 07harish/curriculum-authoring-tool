@@ -4,7 +4,8 @@ import {
   delete_Standard,
   indent_Standard,
   outdent_Standard,
-  move_Standard
+  moveDown_Standard,
+  moveUp_Standard
 } from '../Store/Actions'
 import './Styles/UserActions.css'
 
@@ -13,17 +14,28 @@ const UserActions = React.memo(({ row, rowId }) => {
   const indentRow = useCallback(() => dispatch(indent_Standard(row, rowId)), [row, rowId, dispatch])
   const deleteRow = useCallback(() => dispatch(delete_Standard(row, rowId)), [row, rowId, dispatch])
   const outdentRow = useCallback(() => dispatch(outdent_Standard(row, rowId)), [row, rowId, dispatch])
+  const moveDown = useCallback(() => dispatch(moveDown_Standard(row, rowId)), [row, rowId, dispatch])
+  const moveUp = useCallback(() => dispatch(moveUp_Standard(row, rowId)), [row, rowId, dispatch])
 
   return (
     <div className='UserActions-Wrapper'>
       <span
-        title='Move'
+        title='Move Down'
         onClick={() => {
-          move_Standard(row)
+            moveDown()
         }}
         className='UserActions'
       >
-        <i className='fas fa-arrows-alt'></i>
+        <i className='fas fa-arrow-down'></i>
+      </span>
+       <span
+        title='Move Up'
+        onClick={() => {
+            moveUp()
+        }}
+        className='UserActions'
+      >
+        <i className='fas fa-arrow-up'></i>
       </span>
       <span
         title='Indent'
@@ -37,7 +49,7 @@ const UserActions = React.memo(({ row, rowId }) => {
       <span
         title='Outdent'
         onClick={() => {
-          outdentRow(row)
+          outdentRow()
         }}
         className='UserActions'
       >
@@ -46,7 +58,7 @@ const UserActions = React.memo(({ row, rowId }) => {
       <span
         title='Delete'
         onClick={() => {
-          deleteRow(row)
+          deleteRow()
         }}
         className='UserActions'
       >
@@ -57,7 +69,3 @@ const UserActions = React.memo(({ row, rowId }) => {
 })
 
 export default UserActions
-// {/* <i class='fas fa-arrow-up'></i> */}
-//  <span title='Move Down' className='UserActions'>
-//         <i class='fas fa-arrow-down'></i>
-//       </span>

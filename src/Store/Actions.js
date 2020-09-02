@@ -21,13 +21,6 @@ export const outdent_Standard = (row, rowId) => {
   }
 }
 
-export const move_Standard = (row, rowId) => {
-  return {
-    type: actionTypes.MOVE_STANDARD,
-    payload: { row, rowId }
-  }
-}
-
 export const add_Standard = (row, rowId) => {
   return {
     type: actionTypes.ADD_NEW_STANDARD,
@@ -35,9 +28,23 @@ export const add_Standard = (row, rowId) => {
   }
 }
 
-export const editText_Standard = ({row, rowId, newText}) => {
+export const editText_Standard = ({ row, rowId, newText }) => {
   return {
     type: actionTypes.EDIT_STANDARD,
     payload: { row, rowId, newText }
+  }
+}
+
+export const moveDown_Standard = (row, rowId) => {
+  return {
+    type: actionTypes.MOVE_DOWN,
+    payload: { row, rowId }
+  }
+}
+
+export const moveUp_Standard = (row, rowId) => {
+  return {
+    type: actionTypes.MOVE_UP,
+    payload: { row, rowId }
   }
 }

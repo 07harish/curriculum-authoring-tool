@@ -1,5 +1,4 @@
-
-// constructTree returns Json tree, taking lookup and prev data as params 
+// constructTree returns Json tree, taking lookup and prev data as params
 // lp = Lookup
 // data = Json data
 export const constructTree = function (lp, data) {
@@ -31,17 +30,15 @@ export const findWhereParentExists = function (id, lp) {
   for (let [key, value] of Object.entries(lp)) {
     let index = lp[key].indexOf(id)
     if (value.includes(id)) {
-      console.log("jkad", key);
       return { key, value, index }
     }
   }
 }
 
-// Find the depth of row with Row Id and Lookup 
+// Find the depth of row with Row Id and Lookup
 export const findDepth = (id, lp) => {
   let depth = 0
   function recursive (id) {
-    // console.log('ka11jsd', id, findWhereParentExists(id, lp))
     let { key } = findWhereParentExists(id, lp)
 
     if (key === 'root') {
