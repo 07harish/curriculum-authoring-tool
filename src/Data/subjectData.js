@@ -1,6 +1,6 @@
 export let alldata = {
   root: ['1', '2'],
-  subject: 'Science',
+  subject: 'Mathematics',
   subRows: {
     '1.0': {
       headerText: '1.0 == Count to determine the number of objects in a set',
