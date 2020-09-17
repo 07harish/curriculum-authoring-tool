@@ -1,49 +1,64 @@
 export let alldata = {
-  root: ['1', '2'],
-  subject: 'Mathematics',
+  root: ['1', '2', '1599073201185'],
+  subject: 'Science',
   subRows: {
-    '1.0': {
-      headerText: '1.0 == Count to determine the number of objects in a set',
-      indentDepth: 1,
-      parent: '1'
-    },
     '1': {
-      headerText: '1 ==Numbers',
-      indentDepth: 0,
+      headerText: 'Our Environment',
       subRows: ['1.0', '1.1'],
-      parent: 'root'
-    },
-    '1.1': {
-      headerText: '1.1 == Write Prime numbers from 1 to 100',
-      indentDepth: 1,
-      subRows: ['1.1.0'],
-      parent: '1'
-    },
-    '1.1.0': {
-      headerText: '1.1.0 === Count to determine the number of objects in a set',
-      indentDepth: 2,
-      subRows: ['1.1.0.0', '1.1.0.1'],
-      parent: '1.1'
-    },
-    '1.1.0.0': {
-      headerText: '1.1.0.0 == Write 1 to 100',
-      indentDepth: 3,
-      parent: '1.1.0'
-    },
-    '1.1.0.1': {
-      headerText: '1.1.0.1 == Write 1 to 2000',
-      indentDepth: 3,
-      parent: '1.1.0'
+      parent: 'root',
+      indentDepth: 0
     },
     '2': {
-      headerText: '2 == Measurement',
-      indentDepth: 0,
+      headerText: 'Ecosystem',
       subRows: ['2.0'],
-      parent: 'root'
+      parent: 'root',
+      indentDepth: 0
+    },
+    root: ['1', '2', '1599073201185'],
+    '1.0': { headerText: 'Natural calamaties', parent: '1', indentDepth: 1 },
+    '1.1': {
+      headerText: 'rocks and soil',
+      subRows: ['1.1.0'],
+      parent: '1',
+      indentDepth: 1
+    },
+    '1.1.0': {
+      headerText: 'About rocks',
+      subRows: ['1.1.0.0', '1.1.0.1'],
+      parent: '1.1',
+      indentDepth: 2
+    },
+    '1.1.0.0': {
+      headerText: 'Sedimentary rocks',
+      parent: '1.1.0',
+      indentDepth: 3
+    },
+    '1.1.0.1': {
+      headerText: 'Metamorphic rocks',
+      parent: '1.1.0',
+      indentDepth: 3
     },
     '2.0': {
-      headerText: '2.0 == Use simple fraction names in a real-life situations',
+      headerText: 'Air, water and weather',
+      parent: '2',
       indentDepth: 1
+    },
+    '1599073201185': {
+      headerText: 'Universe',
+      subRows: ['1599073219764'],
+      parent: 'root',
+      indentDepth: 0
+    },
+    '1599073219764': {
+      headerText: 'Planets',
+      subRows: ['1599073263091'],
+      parent: '1599073201185',
+      indentDepth: 1
+    },
+    '1599073263091': {
+      headerText: 'Planets indepth',
+      parent: '1599073219764',
+      indentDepth: 2
     }
   }
 }
