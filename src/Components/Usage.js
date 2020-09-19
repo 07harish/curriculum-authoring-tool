@@ -16,16 +16,18 @@ const Usage = () => {
       </h1>
       <h4>
         <center>
-          ✨ This can be mainly used to design the Syllabus or Curriculum for
-          schools, colleges and elsewhere
+          <span role='img'>✨ </span>This can be mainly used to design the
+          Syllabus or Curriculum for schools, colleges and elsewhere
         </center>
       </h4>
       <hr></hr>
       <p>
-        ✅ You can create Topics and Subtopics. Add text, indent, outdent, move
-        and delete rows.
+        <span role='img'>✅ </span>You can create Topics and Subtopics. Add
+        text, indent, outdent, move and delete rows.
       </p>
-      <p>✅ You can import and export as a json file</p>
+      <p>
+        <span role='img'>✅ </span>You can import and export as a json file
+      </p>
       <ul>
         <li>Indent a row to make it a subtopic</li>
         <li>Outdent a row to make it topic</li>
